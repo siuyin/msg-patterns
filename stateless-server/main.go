@@ -36,12 +36,9 @@ func svr() chan *req {
 	ch := make(chan *req)
 	go func() {
 		for {
-			select {
-			case r := <-ch:
-				serve(r)
-			}
+			r := <-ch
+			serve(r)
 		}
-
 	}()
 	return ch
 }
