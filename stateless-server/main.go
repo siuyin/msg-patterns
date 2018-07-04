@@ -53,7 +53,7 @@ func serve(r *req) {
 
 // client code
 func boss(numReq int, svrCh chan *req) {
-	go func() {
+	go func() { // OK to have a goroutine here to avoid delays due to allocation time.
 		for i := 0; i < numReq; i++ {
 			request(i, svrCh)
 		}
